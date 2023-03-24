@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+
+from services.views import SubscriptionView
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/subscriptions',SubscriptionView.as_view())
 ]
+
+

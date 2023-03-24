@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'clients',
     'services',
+    'rest_framework',
     
 ]
 
