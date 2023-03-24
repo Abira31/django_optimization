@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'clients',
     'services',
     'rest_framework',
+    'debug_toolbar'
     
 ]
 
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -139,3 +141,25 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK": lambda request: True,
+}
+
+LOGGING = {
+    'version':1,
+    'handlers':{
+        'console': {'class':'logging.StreamHandler'}
+    },
+    'loggers':{
+        'django.db.backends':{
+            'handlers':['console'],
+            'level':'DEBUG'
+        }
+    }
+}
